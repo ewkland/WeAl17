@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi, I'm Weal</title>
+    <link rel="icon" href="./img/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, var(--color1), var(--color2), var(--color3), var(--color4));
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: #000;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .title {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: colorChange 5s infinite;
+        }
+
+        @keyframes colorChange {
+            0% { color: var(--color1); }
+            50% { color: var(--color2); }
+            100% { color: var(--color3); }
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px auto;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            border-color: #fff;
+        }
+
+        .discord { background-color: #7289da; }
+        .discord:hover { background-color: #5b6eae; }
+
+        .youtube { background-color: #ff0000; }
+        .youtube:hover { background-color: #cc0000; }
+
+        .mp3player { background-color: #34a853; }
+        .mp3player:hover { background-color: #2c8a41; }
+
+        .bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--bubbleColor);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: rise 10s infinite ease-in;
+        }
+
+        @keyframes rise {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-1200px); }
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 1em;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px;
+        }
+    </style>
+</head>
+<body style="--color1: #ff9a9e; --color2: #fad0c4; --color3: #fad0c4; --color4: #ff9a9e; --bubbleColor: #3498db;">
+    <div class="container">
+        <div class="title">Добро пожаловать</div>
+        <a href="https://example.com/" class="button discord">
+            <img src="img/discord_logo.png" alt="Discord" style="width: 24px; height: 24px;">
+            Скоро...
+        </a>
+        <a href="https://www.youtube.com/@weal17" class="button youtube">
+            <img src="img/youtube_logo.png" alt="YouTube" style="width: 24px; height: 24px;">
+            Мой ютуб канал
+        </a>
+        <a href="mp3_player.html" class="button mp3player">
+            <img src="img/mp3player.png" alt="MP3 Player" style="width: 24px; height: 24px;">
+            MP3 Плеер
+        </a>
+    </div>
+    <div class="bubbles">
+        <div class="bubble" style="left: 10%; animation-duration: 8s;"></div>
+        <div class="bubble" style="left: 20%; animation-duration: 12s;"></div>
+        <div class="bubble" style="left: 30%; animation-duration: 6s;"></div>
+        <div class="bubble" style="left: 40%; animation-duration: 14s;"></div>
+        <div class="bubble" style="left: 50%; animation-duration: 10s;"></div>
+        <div class="bubble" style="left: 60%; animation-duration: 12s;"></div>
+        <div class="bubble" style="left: 70%; animation-duration: 8s;"></div>
+        <div class="bubble" style="left: 80%; animation-duration: 14s;"></div>
+        <div class="bubble" style="left: 90%; animation-duration: 10s;"></div>
+    </div>
+    <div class="footer">
+        ©WeAl17
+    </div>
+    <script>
+        window.onload = function() {
+            var colors = [
+                ['#ff9a9e', '#fad0c4', '#fad0c4', '#ff9a9e'],
+                ['#a18cd1', '#fbc2eb', '#fbc2eb', '#a18cd1'],
+                ['#f093fb', '#f5576c', '#f5576c', '#f093fb'],
+                ['#4facfe', '#00f2fe', '#00f2fe', '#4facfe'],
+                ['#43e97b', '#38f9d7', '#38f9d7', '#43e97b']
+            ];
+
+            var bubblesColors = ['#3498db', '#e74c3c', '#9b59b6', '#2ecc71', '#e67e22'];
+
+            var colorIndex = Math.floor(Math.random() * colors.length);
+            var selectedColors = colors[colorIndex];
+            var bubbleColor = bubblesColors[colorIndex];
+
+            document.body.style.setProperty('--color1', selectedColors[0]);
+            document.body.style.setProperty('--color2', selectedColors[1]);
+            document.body.style.setProperty('--color3', selectedColors[2]);
+            document.body.style.setProperty('--color4', selectedColors[3]);
+            document.body.style.setProperty('--bubbleColor', bubbleColor);
+        };
+    </script>
+    <script>
+        document.querySelector('.discord').addEventListener('click', function(event) {
+            event.preventDefault();
+            alert('Coming Soon');
+        });
+    </script>
+</body>
+</html>
